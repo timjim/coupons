@@ -27,6 +27,17 @@
 
   <div class="form-group">
     <div class="form-label">
+      <%= form.label 'Partner' %>
+      <%= form.hint  'Optional: Choose the partner who this promo code belongs to.' %>
+    </div>
+
+    <div class="form-control">
+      <%= form.collection_select(:partner_id, Partner.order(:name), :id, :name, {:selected => coupon.partner_id if coupon.partner_id.present?}) %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
       <%= form.label :redemption_limit %>
       <%= form.hint  :redemption_limit %>
     </div>
