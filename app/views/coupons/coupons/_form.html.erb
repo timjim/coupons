@@ -32,7 +32,7 @@
     </div>
 
     <div class="form-control">
-      <%= form.collection_select(:partner_id, Partner.order(:name), :id, :name, {:selected => coupon.partner_id if coupon.partner_id.present?}) %>
+      <%= form.collection_select(:partner_id, Partner.order(:name), :id, :name, {:selected => coupon.partner_id}) %>
     </div>
   </div>
 
