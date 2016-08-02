@@ -32,7 +32,7 @@
     </div>
 
     <div class="form-control">
-      <%= form.collection_select(:partner_id, Partner.order(:name), :id, :name, {:selected => coupon.partner_id, include_blank => 'None'}) %>
+      <%= form.collection_select(:partner_id, Partner.order(:name), :id, :name, {:selected => coupon.partner_id, :include_blank => 'None'}) %>
     </div>
   </div>
 
