@@ -49,6 +49,18 @@
 
   <div class="form-group">
     <div class="form-label">
+      <%= form.label 'Credit' %>
+      <%= form.hint  'Optional: Override how much credit is transferred to the local' %>
+    </div>
+
+    <div class="form-control">
+      <%= form.number_field :credit, min: 0 %>
+      <%= form.error_for :credit %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
       <%= form.label :redemption_limit %>
       <%= form.hint  :redemption_limit %>
     </div>
