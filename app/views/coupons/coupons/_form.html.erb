@@ -38,6 +38,17 @@
 
   <div class="form-group">
     <div class="form-label">
+      <%= form.label 'Listing' %>
+      <%= form.hint 'Optional: Restrict this coupon to a particular listing' %>
+    </div>
+
+    <div class="form-control">
+      <%= form.collection_select(:listing_id, Listing.published.paid.near("London", 25, :order => false).order(:title), :id, :title, {:selected => coupon.listing_id, :include_blank => 'None'}) %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
       <%= form.label :redemption_limit %>
       <%= form.hint  :redemption_limit %>
     </div>
