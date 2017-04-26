@@ -18,6 +18,7 @@ module Coupons
 
       has_many :redemptions, class_name: 'Coupons::Models::CouponRedemption'
       belongs_to :partner
+      belongs_to :listing
 
       validates_presence_of :code, :valid_from
       validates_inclusion_of :type, in: %w[percentage amount]
