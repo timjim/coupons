@@ -10,7 +10,7 @@ class Coupons::CouponsController < Coupons::ApplicationController
     coupon = Coupon.find_by(code: coupon_code)
     
     if coupon.present?
-      options = options.merge(listing_id: coupon.listing_id)
+      options = options.merge(listing_id: coupon.listing_id, guest_count_override: coupon.guest_count_override)
     end
 
     render json: options
