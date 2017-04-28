@@ -4,7 +4,7 @@ class Coupons::CouponsController < Coupons::ApplicationController
     amount = BigDecimal(params.fetch(:amount, '0.0'))
     options = Coupons
               .apply(params[:coupon], amount: amount)
-              .slice(:amount, :discount, :total)
+              .slice(:amount, :discount, :total, :listing_id)
               .reduce({}) {|buffer, (key, value)| buffer.merge(key => Float(value)) }
 
     render json: options
