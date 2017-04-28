@@ -51,8 +51,6 @@ module Coupons
         options = Coupons.configuration.resolvers.reduce(options) do |options, resolver|
           resolver.resolve(self, options)
         end
-    
-        options = options.merge(listing_id: listing_id)
         
         options
       end
