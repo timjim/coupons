@@ -3,9 +3,15 @@ class Coupons::CouponsController < Coupons::ApplicationController
     coupon_code = params[:coupon]
     amount = BigDecimal(params.fetch(:amount, '0.0'))
     options = Coupons
-              .apply(params[:coupon], amount: amount)
-              .slice(:amount, :discount, :total, :listing_id)
+              .apply(coupon_code, amount: amount)
+              .slice(:amount, :discount, :total)
               .reduce({}) {|buffer, (key, value)| buffer.merge(key => Float(value)) }
+    
+    coupon = Coupon.find_by(code: coupon_code)
+    
+    if coupon.present?
+      options = options.merge(listing_id: coupon.listing_id)
+    end
 
     render json: options
   end
